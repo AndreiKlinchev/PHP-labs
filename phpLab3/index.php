@@ -1,6 +1,5 @@
 <?php
 
-
 function empGraphic($arr, $workHours){
     $day = date("w");
 
