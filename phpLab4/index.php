@@ -169,6 +169,15 @@ function addTransaction(int $id, string $date, float $amount, string $descriptio
         "merchant" => $merchant,];
     }
 
+function dateSort($a, $b){
+    return $a["date"] <=> $b["date"];
+}
+
+function amountSort($a, $b){
+    return $b["amount"] <=> $a["amount"] ;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -192,6 +201,10 @@ function addTransaction(int $id, string $date, float $amount, string $descriptio
 </thead>
 
 <tbody>
+    <?php usort($transactions, "dateSort") ?> <!--transactions date sort -->
+    
+    <?php usort($transactions, "amountSort") ?> <!--transactions date sort -->
+    
     <?php foreach ($transactions as $el): ?>
     <tr>
     <td><?= $el["id"];?></td>
