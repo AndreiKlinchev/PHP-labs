@@ -131,6 +131,7 @@ $transactions = [
  * @return float|null Returns the sum of amounts, or null if the array is empty.
  */
 function calculateTotalAmount(array $transactions): ?float {
+    global $transactions;
     if (empty($transactions)) {
         return null;
     }
@@ -150,6 +151,7 @@ function calculateTotalAmount(array $transactions): ?float {
  * @return array|null Returns the transaction as an array, or null if not found.
  */
 function findTransactionByDescription(string $descriptionPart): ?array {
+    global $transactions;
     foreach ($transactions as $elem) {
         if (str_contains($elem["description"], $descriptionPart)) {
             return $elem;
@@ -165,9 +167,8 @@ function findTransactionByDescription(string $descriptionPart): ?array {
  * @return array Array of transactions matching the ID (may be empty).
  */
 function findTransactionById(int $id): array {
-    return array_filter($transactions, function ($el) use ($id) {
-        return $el["id"] == $id;
-    });
+    global $transactions;
+    return (array_filter($transactions, function ($el) use ($id) {return $el["id"] == $id;}));
 }
 
 /**
@@ -194,7 +195,7 @@ function addTransaction(int $id, string $date, float $amount, string $descriptio
     global $transactions;
     $transactions[] = [
         "id" => $id,
-        "date" => new DateTime($date),
+        "date" => $date,
         "amount" => $amount,
         "description" => $description,
         "merchant" => $merchant,
@@ -223,6 +224,38 @@ function amountSort(array $a, array $b): int {
     return $b["amount"] <=> $a["amount"];
 }
 
+addTransaction(18, "2022-08-15", 156.6, "Coffee cup", "Coffee shop");
+
+$totalAmountOfAll = calculateTotalAmount($transactions);
+echo "Total amount {$totalAmountOfAll}<br />";
+echo "--------------------------------<br />";
+
+
+$transactionByDescription = findTransactionByDescription("cup");
+echo "Transactions by description <br />";
+
+if ($transactionByDescription != null){
+    echo "--------------------------------<br />";
+    echo "ID {$transactionByDescription['id']}<br />";
+    echo "Date {$transactionByDescription['date']}<br />";
+    echo "Amount {$transactionByDescription['amount']}<br />";
+    echo "Description {$transactionByDescription['description']}<br />";
+    echo "Merchant {$transactionByDescription['merchant']}<br />";
+    echo "--------------------------------<br />";
+}
+
+$transactionByID =array_values(findTransactionById(15))[0];
+echo "Transactions by ID <br />";
+if ($transactionByID != null){
+    echo "--------------------------------<br />";
+    echo "ID {$transactionByID['id']}<br />";
+    echo "Date {$transactionByID['date']}<br />";
+    echo "Amount {$transactionByID['amount']}<br />";
+    echo "Description {$transactionByID['description']}<br />";
+    echo "Merchant {$transactionByID['merchant']}<br />";
+    echo "--------------------------------<br />";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -233,6 +266,9 @@ function amountSort(array $a, array $b): int {
     <title>Transact Table</title>
 </head>
 <body>
+
+
+
     <table border='1'>
 <thead>
     <tr>
