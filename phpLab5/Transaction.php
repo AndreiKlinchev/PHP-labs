@@ -24,7 +24,7 @@ class Transaction{
         return $this->date;
     }
 
-    function getTransactionAmount():int{
+    public function getTransactionAmount():int{
         return $this->amount;
     }
 

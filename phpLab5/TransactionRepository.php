@@ -10,10 +10,16 @@ class TransactionRepository{
     }
 
     function removeTransactionById(int $id): void{
-        unset($this->transactions[$id]);
+
+        for ($i = 0; $i < count($this->transactions); $i++) {
+        if ($this->transactions[$i]->getId() === $id) {
+            array_splice($this->transactions, $i, 1);
+            return;
+        }
+    }
     }
 
-    function getAllTransactions(): array{
+    public function getAllTransactions(): array{
         $this->transactions;
     }
 
