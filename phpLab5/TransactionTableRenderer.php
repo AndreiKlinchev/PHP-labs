@@ -1,11 +1,6 @@
 <?php
 declare(strict_types=1);
 
-/**
- * Class TransactionTableRenderer
- *
- * Responsible for rendering transactions as an HTML table.
- */
 final class TransactionTableRenderer
 {
     /**

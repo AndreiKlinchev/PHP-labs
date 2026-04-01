@@ -1,11 +1,6 @@
 <?php
 declare(strict_types=1);
 
-/**
- * Interface ITransactionStorage
- *
- * Defines a contract for transaction storage.
- */
 interface ITransactionStorage
 {
     /**

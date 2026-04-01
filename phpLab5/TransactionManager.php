@@ -1,12 +1,6 @@
 <?php
 declare(strict_types=1);
 
-/**
- * Class TransactionManager
- *
- * Provides business logic for working with transactions:
- * calculations, filtering, and sorting.
- */
 class TransactionManager
 {
     /**

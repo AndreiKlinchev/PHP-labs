@@ -2,12 +2,6 @@
 declare(strict_types=1);
 
 require_once "TransactionStorageInterface.php";
-
-/**
- * Class TransactionRepository
- *
- * In-memory implementation of transaction storage.
- */
 class TransactionRepository implements ITransactionStorage
 {
     /**

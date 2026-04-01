@@ -1,12 +1,6 @@
 <?php
 declare(strict_types=1);
 
-/**
- * Class Transaction
- *
- * Represents a single financial transaction.
- * Stores transaction ID, date, amount, description, and merchant.
- */
 class Transaction
 {
     private int $id;
