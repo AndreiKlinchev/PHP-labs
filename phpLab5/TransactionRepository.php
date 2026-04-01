@@ -1,31 +1,67 @@
 <?php
 declare(strict_types=1);
 
-class TransactionRepository{
-    private array $transactions =[];
+require_once "TransactionStorageInterface.php";
 
+/**
+ * Class TransactionRepository
+ *
+ * In-memory implementation of transaction storage.
+ */
+class TransactionRepository implements ITransactionStorage
+{
+    /**
+     * @var Transaction[] List of stored transactions.
+     */
+    private array $transactions = [];
 
-    function addTransaction(Transaction $transaction): void{
-        array_push($this->transactions, $transaction);
+    /**
+     * Adds a transaction to the repository.
+     *
+     * @param Transaction $transaction Transaction to add.
+     * @return void
+     */
+    public function addTransaction(Transaction $transaction): void
+    {
+        $this->transactions[] = $transaction;
     }
 
-    function removeTransactionById(int $id): void{
-
+    /**
+     * Removes a transaction by its ID.
+     *
+     * @param int $id Transaction ID.
+     * @return void
+     */
+    public function removeTransactionById(int $id): void
+    {
         for ($i = 0; $i < count($this->transactions); $i++) {
-        if ($this->transactions[$i]->getId() === $id) {
-            array_splice($this->transactions, $i, 1);
-            return;
+            if ($this->transactions[$i]->getTransactionID() === $id) {
+                array_splice($this->transactions, $i, 1);
+                return;
+            }
         }
     }
+
+    /**
+     * Returns all transactions.
+     *
+     * @return Transaction[] Array of transactions.
+     */
+    public function getAllTransactions(): array
+    {
+        return $this->transactions;
     }
 
-    public function getAllTransactions(): array{
-        $this->transactions;
-    }
-
-    function findById(int $id): ?Transaction{
-        foreach($this->transactions as $transaction){
-            if ($transaction->getTransactionID() == $id){
+    /**
+     * Finds a transaction by ID.
+     *
+     * @param int $id Transaction ID.
+     * @return Transaction|null Found transaction or null.
+     */
+    public function findById(int $id): ?Transaction
+    {
+        foreach ($this->transactions as $transaction) {
+            if ($transaction->getTransactionID() === $id) {
                 return $transaction;
             }
         }
