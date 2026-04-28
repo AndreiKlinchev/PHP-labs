@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.wide {
+    max-width: 1200px;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.subtitle {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.actions {
+    margin-bottom: 20px;
+}
+
+.actions a,
+.sort-links a {
+    color: #0b57d0;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.fact-form {
+    display: grid;
+    gap: 15px;
+}
+
+.fact-form label {
+    display: grid;
+    gap: 6px;
+    font-weight: bold;
+}
+
+.fact-form input,
+.fact-form select,
+.fact-form textarea,
+.fact-form button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #c7c7c7;
+    border-radius: 6px;
+}
+
+.fact-form button {
+    background-color: #198754;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    font-weight: normal !important;
+}
+
+.message {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+.sort-links {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        background-color: #fff;
+    }
+
+    td {
+        border: none;
+        padding: 6px 0;
+    }
+}
